@@ -26,6 +26,7 @@ class UnitConversionVM: ViewModel() {
 
     private var unitToConvert by mutableStateOf("")
     private var convertedUnit by mutableStateOf("")
+    private var calcUnitName by mutableStateOf("")
 
     //Setters
     fun setterUnitToConvert(input: String){
@@ -34,6 +35,9 @@ class UnitConversionVM: ViewModel() {
     fun setterConvertedUnit(input: Double){
         convertedUnit = input.toString()
     }
+    fun setterCalcUnitName(input: String){
+        calcUnitName = input
+    }
 
     //Getters
     fun getterUnitToConvert(): String{
@@ -41,5 +45,8 @@ class UnitConversionVM: ViewModel() {
     }
     fun getterConvertedUnit(): String{
         return convertedUnit
+    }
+    fun getterCalcUnitName(): String {
+        return calcUnitName
     }
 }

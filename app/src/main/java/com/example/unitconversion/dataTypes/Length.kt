@@ -5,7 +5,7 @@ import java.math.RoundingMode
 class Length : DataInterface {
     override val name = "Length"
     override val listOfUnits = listOf(
-        "Inch",
+        "Inches",
         "Feet",
         "Yards",
         "Meters"

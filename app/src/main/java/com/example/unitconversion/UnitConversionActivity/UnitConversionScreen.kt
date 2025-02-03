@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -52,6 +53,14 @@ class UnitConversionScreen{
                 .background(Color.LightGray),
             horizontalAlignment = Alignment.CenterHorizontally
         ){
+            Box(
+                contentAlignment = Alignment.BottomCenter,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.Gray)
+                    .size(60.dp)
+            ) {
+            }
             Text(
                 text = "Unit Conversion",
                 color = Color.Black,
@@ -66,7 +75,23 @@ class UnitConversionScreen{
                     .padding(bottom = 32.dp)
             ){}
             ExpenditureType(viewModel)
+            Text(
+                modifier = Modifier
+                    .padding(top = 16.dp),
+                text = "Starting Values",
+                color = Color.Black,
+                fontSize = 25.sp,
+                fontWeight = FontWeight.Bold
+            )
             UserInput(viewModel)
+            Text(
+                modifier = Modifier
+                    .padding(top = 16.dp),
+                text = "Result",
+                color = Color.Black,
+                fontSize = 25.sp,
+                fontWeight = FontWeight.Bold
+            )
             Result(viewModel)
             ListOptions(viewModel)
         }
@@ -143,19 +168,11 @@ class UnitConversionScreen{
                 .width(300.dp),
             contentAlignment = Alignment.Center
         ){
-            Column(){
-                Text(
-                    text = "Result",
-                    color = Color.Black,
-                    fontSize = 10.sp,
-                    fontStyle = FontStyle.Italic
-                )
-                Text(
-                    text = viewModel.getterConvertedUnit(),
-                    color = Color.Black,
-                    fontSize = 20.sp,
-                )
-            }
+            Text(
+                text = viewModel.getterConvertedUnit() + " " + viewModel.getterCalcUnitName(),
+                color = Color.Black,
+                fontSize = 20.sp,
+            )
         }
     }
 
@@ -237,6 +254,7 @@ class UnitConversionScreen{
                 .padding(4.dp),
             colors = ButtonColors(Color.DarkGray, Color.White, Color.DarkGray, Color.White),
             onClick = {
+                viewModel.setterCalcUnitName(conversion)
                 convertUnit(viewModel, conversion, context)
             }) {
             Text(
